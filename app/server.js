@@ -4,7 +4,11 @@ const app = express();
 require("dotenv").config();
 
 //middleware
-app.use(cors());
+var corsOption = {
+  origin: "*",
+};
+
+app.use(cors(corsOption));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
