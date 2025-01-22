@@ -5,7 +5,9 @@ require("dotenv").config();
 
 //middleware
 var corsOption = {
-  origin: "*",
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "OPTIONS"],
+  credentials: true,
 };
 
 app.use(cors(corsOption));
