@@ -5,9 +5,7 @@ require("dotenv").config();
 
 //middleware
 var corsOption = {
-  origin: "http://localhost:5173",
-  methods: ["GET", "POST", "OPTIONS"],
-  credentials: true,
+  origin: "*",
 };
 
 app.use(cors(corsOption));
@@ -18,6 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 const db = require("./models");
 db.sequelize.sync({ force: false, alter: true }).then(() => {
   console.log("drop and resync db");
+});
+
+app.get("/", (req, res) => {
+  res.json({ message: "welcome to random quote API" });
 });
 
 //route
